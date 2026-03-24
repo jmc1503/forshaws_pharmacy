@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forshaw's Pharmacy | Weight Management Clinic</title>
+  <style>
+    :root {
+      --bg: #ececec;
+      --green: #0ac000;
+      --green-bright: #20ff12;
+      --green-dark: #4d650d;
+      --text: #121212;
+      --white: #ffffff;
+      --shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      --radius-xl: 999px;
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --border: 4px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behaviour: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .section {
+      padding: 28px 0 40px;
+    }
+
+    .hero {
+      padding-top: 34px;
+    }
+
+    .pill-title {
+      background: var(--green);
+      color: var(--white);
+      border-radius: var(--radius-xl);
+      text-align: centre;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      box-shadow: var(--shadow);
+      padding: 18px 28px;
+      font-size: clamp(1.1rem, 2.7vw, 2.6rem);
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+
+    .section-heading {
+      text-align: center;
+      font-size: clamp(2.2rem, 5vw, 4.4rem);
+      font-weight: 500;
+      margin: 32px 0 28px;
+    }
+
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(280px, 1fr));
+      gap: 48px;
+      align-items: start;
+      justify-content: center;
+      margin-top: 14px;
+    }
+
+    .price-card {
+      background: transparent;
+      border: 3px solid var(--green);
+      box-shadow: var(--shadow);
+    }
+
+    .price-card table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    .price-card th,
+    .price-card td {
+      border: 3px solid var(--green);
+      text-align: center;
+      padding: 22px 14px;
+      font-size: clamp(1rem, 2vw, 1.15rem);
+    }
+
+    .price-card thead th {
+      font-weight: 800;
+      font-size: clamp(1.2rem, 2.3vw, 1.5rem);
+      padding: 26px 12px;
+      background: rgba(255, 255, 255, 0.28);
+    }
+
+    .price-card tbody td {
+      height: 84px;
+    }
+
+    .services-list {
+      max-width: 860px;
+      margin: 72px auto 0;
+      display: grid;
+      gap: 52px;
+    }
+
+    .service-item {
+      display: grid;
+      grid-template-columns: 86px 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .tick {
+      width: 64px;
+      height: 64px;
+      border: 4px solid #42b82e;
+      border-radius: 14px;
+      position: relative;
+      margin: 0 auto;
+    }
+
+    .tick::after {
+      content: "";
+      position: absolute;
+      left: 18px;
+      top: 8px;
+      width: 17px;
+      height: 34px;
+      border: solid #42b82e;
+      border-width: 0 6px 6px 0;
+      transform: rotate(45deg);
+    }
+
+    .service-text {
+      font-size: clamp(1.2rem, 2.4vw, 2rem);
+      text-align: center;
+      max-width: 700px;
+      justify-self: center;
+    }
+
+    .cta-wrap {
+      display: flex;
+      justify-content: center;
+      margin: 56px 0 0;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 26px;
+      border: 6px solid var(--green);
+      border-radius: var(--radius-xl);
+      padding: 12px 34px 12px 14px;
+      color: var(--green);
+      background: rgba(255,255,255,0.75);
+      box-shadow: var(--shadow);
+      font-size: clamp(1.4rem, 4vw, 3.1rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .cta-button:hover,
+    .cta-button:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.12);
+      outline: none;
+    }
+
+    .cta-icon {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: var(--green);
+      position: relative;
+      flex: 0 0 auto;
+    }
+
+    .cta-icon::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      border-top: 8px solid var(--white);
+      border-right: 8px solid var(--white);
+      transform: translate(-60%, -50%) rotate(45deg);
+    }
+
+    .footer-art {
+      position: relative;
+      margin-top: 46px;
+      min-height: 290px;
+    }
+
+    .wave-front,
+    .wave-back {
+      position: absolute;
+      inset: auto 0 0 0;
+      width: 100%;
+      pointer-events: none;
+    }
+
+    .wave-back {
+      height: 245px;
+      background: var(--green-dark);
+      clip-path: ellipse(72% 100% at 28% 100%);
+      z-index: 0;
+    }
+
+    .wave-front {
+      height: 205px;
+      background: var(--green-bright);
+      clip-path: ellipse(58% 95% at 62% 100%);
+      z-index: 1;
+      bottom: 30px;
+    }
+
+    .footer-content {
+      position: relative;
+      z-index: 2;
+      min-height: 290px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 0 0 28px;
+    }
+
+    .brand-card {
+      color: var(--white);
+      padding: 22px 0 0;
+      max-width: 440px;
+    }
+
+    .brand-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--white);
+      color: #2ca82c;
+      border-radius: var(--radius-xl);
+      padding: 12px 18px;
+      font-weight: 800;
+      font-size: clamp(1rem, 1.8vw, 1.35rem);
+      margin-bottom: 18px;
+    }
+
+    .brand-logo {
+      width: 26px;
+      height: 26px;
+      position: relative;
+      border: 3px solid currentColor;
+      border-radius: 4px;
+    }
+
+    .brand-logo::before,
+    .brand-logo::after {
+      content: "";
+      position: absolute;
+      background: currentColor;
+    }
+
+    .brand-logo::before {
+      width: 3px;
+      height: 38px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .brand-logo::after {
+      height: 3px;
+      width: 38px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 10px;
+      font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .contact-icon {
+      width: 28px;
+      height: 28px;
+      border: 3px solid var(--white);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      line-height: 1;
+      flex: 0 0 auto;
+    }
+
+    @media (max-width: 900px) {
+      .price-grid {
+        grid-template-columns: 1fr;
+        max-width: 520px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-end;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .section {
+        padding: 20px 0 24px;
+      }
+
+      .hero {
+        padding-top: 18px;
+      }
+
+      .pill-title {
+        padding: 16px 18px;
+        border-radius: 28px;
+      }
+
+      .section-heading {
+        margin: 26px 0 20px;
+      }
+
+      .services-list {
+        gap: 32px;
+        margin-top: 40px;
+      }
+
+      .service-item {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .service-text {
+        font-size: 1.35rem;
+      }
+
+      .cta-button {
+        width: 100%;
+        justify-content: center;
+        gap: 16px;
+        padding-right: 20px;
+        font-size: 1.8rem;
+      }
+
+      .cta-icon {
+        width: 72px;
+        height: 72px;
+      }
+
+      .footer-art,
+      .footer-content {
+        min-height: 320px;
+      }
+
+      .wave-back {
+        height: 220px;
+        clip-path: ellipse(96% 100% at 32% 100%);
+      }
+
+      .wave-front {
+        height: 180px;
+        bottom: 24px;
+        clip-path: ellipse(84% 96% at 65% 100%);
+      }
+
+      .brand-card {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <main>
+      <section class="section hero">
+        <div class="container">
+          <div class="pill-title">Weight Management Clinic</div>
+          <h1 class="section-heading">Prices</h1>
+
+          <div class="price-grid">
+            <div class="price-card" aria-label="Mounjaro prices">
+              <table>
+                <thead>
+                  <tr><th colspan="2">Mounjaro</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>2.5mg</td><td>£147.99</td></tr>
+                  <tr><td>5mg</td><td>£173.99</td></tr>
+                  <tr><td>7.5mg</td><td>£233.99</td></tr>
+                  <tr><td>10mg</td><td>£250.99</td></tr>
+                  <tr><td>12.5mg</td><td>£273.99</td></tr>
+                  <tr><td>15mg</td><td>£294.99</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="price-card" aria-label="Wegovy prices">
+              <table>
+                <thead>
+                  <tr><th colspan="2">Wegovy</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>0.25mg</td><td>£99</td></tr>
+                  <tr><td>0.5mg</td><td>£119</td></tr>
+                  <tr><td>1mg</td><td>£139</td></tr>
+                  <tr><td>1.7mg</td><td>£169</td></tr>
+                  <tr><td>2.4mg</td><td>£199</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="cta-wrap">
+            <a
+              class="cta-button"
+              href="https://pharmadoctor.co.uk/patient/locations/north-west/liverpool/Forshaw-s-Pharmacy-L64EP-3954"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Book now with Forshaw's Pharmacy"
+            >
+              <span class="cta-icon" aria-hidden="true"></span>
+              <span>Book Now</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="pill-title">Other Clinics and Services</div>
+
+          <div class="services-list">
+            <div class="service-item">
+              <span class="tick" aria-hidden="true"></span>
+              <div class="service-text">Travel Clinic (including vaccines and antimalarials)</div>
+            </div>
+
+            <div class="service-item">
+              <span class="tick" aria-hidden="true"></span>
+              <div class="service-text">Vaccines (including meningitis, shingles and chickenpox)</div>
+            </div>
+
+            <div class="service-item">
+              <span class="tick" aria-hidden="true"></span>
+              <div class="service-text">FREE NHS Contraception Service</div>
+            </div>
+
+            <div class="service-item">
+              <span class="tick" aria-hidden="true"></span>
+              <div class="service-text">NHS Pharmacy First Service (including sore throats and UTIs)</div>
+            </div>
+          </div>
+
+          <div class="cta-wrap">
+            <a
+              class="cta-button"
+              href="https://pharmadoctor.co.uk/patient/locations/north-west/liverpool/Forshaw-s-Pharmacy-L64EP-3954"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Book now with Forshaw's Pharmacy"
+            >
+              <span class="cta-icon" aria-hidden="true"></span>
+              <span>Book Now</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer-art">
+      <div class="wave-back"></div>
+      <div class="wave-front"></div>
+      <div class="container footer-content">
+        <div class="brand-card">
+          <div class="brand-pill">
+            <span class="brand-logo" aria-hidden="true"></span>
+            <span>Forshaw’s Pharmacy</span>
+          </div>
+          <div class="contact-list">
+            <div class="contact-row"><span class="contact-icon">☎</span><span>0151 263 1678</span></div>
+            <div class="contact-row"><span class="contact-icon">⌖</span><span>Belmont Grove, Liverpool, L6 4EP</span></div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
